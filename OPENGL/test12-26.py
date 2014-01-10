@@ -25,8 +25,8 @@ class main (object):
         return d
     def sortZ(self,point):
         return point[2]
-        
-        
+
+
     def createScenes(self):
         for x in range (-self.scaneSize,self.scaneSize,self.resolution):
 
@@ -38,7 +38,7 @@ class main (object):
         self.points.sort(key=self.sortZ,reverse = True)
 
     def draw (self):
-        
+
         for point in self.points:
             cameraPointX = point[0]-self.cameraPos[0]
             cameraPointY = point[1]-self.cameraPos[1]
@@ -66,53 +66,52 @@ class main (object):
                 self.cameraPos = (self.cameraPos[0],self.cameraPos[1]+0.05,self.cameraPos[2])
             if pressed_keys[K_s] :
                 self.cameraPos = (self.cameraPos[0],self.cameraPos[1]-0.05,self.cameraPos[2])
-	    
-	    def z_rotation_pos(cameraPos,rad):
-		x = cameraPos[0]
-		y = cameraPos[1]
-		z = cameraPos[2]
-		ra = sqrt(x**2+y**2)
-		if ra!=0 :
-		    or_de = atan(y/x)  
-		    if x < 0 :
-			or_de = or_de + 3.14
-		    jd= or_de + rad
-		    x = ra * cos(jd)
-		    y = ra * sin(jd)
-		return (x,y,z)   
-		
-	    if pressed_keys[K_z]:
-		self.cameraPos = z_rotation_pos(self.cameraPos,0.1)
-            
-	    if pressed_keys[K_x]:
-		self.cameraPos = z_rotation_pos(self.cameraPos,-0.1)     
-		
-	    def y_rotation_pos(cameraPos,rad):
-		x = cameraPos[0]
-		y = cameraPos[1]
-		z = cameraPos[2]
-		ra = sqrt(x**2+z**2)
-		if ra!=0 :
-		    or_de = atan(x/z)  
-		    if z < 0 :
-			or_de = or_de + 3.14
-		    jd= or_de + rad
-		    z = ra * cos(jd)
-		    x = ra * sin(jd)
-		return (x,y,z)   
-		
-	    if pressed_keys[K_j]:
-		self.cameraPos = y_rotation_pos(self.cameraPos,0.05)
-	    
-	    if pressed_keys[K_k]:
-		self.cameraPos = y_rotation_pos(self.cameraPos,-0.05) 	    
-            
+
+            def z_rotation_pos(cameraPos,rad):
+                x = cameraPos[0]
+                y = cameraPos[1]
+                z = cameraPos[2]
+                ra = sqrt(x**2+y**2)
+                if ra!=0 :
+                    or_de = atan(y/x)  
+                    if x < 0 :
+                        or_de = or_de + 3.14
+                    jd= or_de + rad
+                    x = ra * cos(jd)
+                    y = ra * sin(jd)
+                return (x,y,z)   
+
+            if pressed_keys[K_z]:
+                self.cameraPos = z_rotation_pos(self.cameraPos,0.1)
+
+            if pressed_keys[K_x]:
+                self.cameraPos = z_rotation_pos(self.cameraPos,-0.1)     
+
+            def y_rotation_pos(cameraPos,rad):
+                x = cameraPos[0]
+                y = cameraPos[1]
+                z = cameraPos[2]
+                ra = sqrt(x**2+z**2)
+                if ra!=0 :
+                    or_de = atan(x/z)  
+                    if z < 0 :
+                        or_de = or_de + 3.14
+                    jd= or_de + rad
+                    z = ra * cos(jd)
+                    x = ra * sin(jd)
+                return (x,y,z)   
+
+            if pressed_keys[K_j]:
+                self.cameraPos = y_rotation_pos(self.cameraPos,0.05)
+
+            if pressed_keys[K_k]:
+                self.cameraPos = y_rotation_pos(self.cameraPos,-0.05) 	    
+
             self.screen.fill((0,0,0))
             self.draw()
             pygame.display.update()
 
 myGame = main()
 myGame.run()
-            
-    
-                    
+
+
