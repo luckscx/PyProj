@@ -215,7 +215,7 @@ def test():
 
         eta_list.append(eta)
         area_frac_list.append(area_frac)
-        print("rad=%.3f,n=%d,eat=%.3f,area fraction=%.3f" %(rad,aver_n,eta,area_frac))
+        print("rad=%.3f,aver_n=%d,eat=%.3f,area fraction=%.3f" %(rad,aver_n,eta,area_frac))
 
     estimate_val = sum(area_frac_list)/len(area_frac_list)   
     print("The estimate of percolation threshold is %.6f" %  estimate_val)    
